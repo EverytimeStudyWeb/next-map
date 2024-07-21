@@ -2,7 +2,7 @@ import Script from "next/script";
 import { Map } from "react-kakao-maps-sdk";
 
 // npm install react-kakao-maps-sdk
-const KAKAO_SDK_URL = `//dapi.kakao.com/v2/maps/sdk.js?appkey=b4dbb01618c369d6fccddd1e90bb4dee&autoload=false`;
+const KAKAO_SDK_URL = `//dapi.kakao.com/v2/maps/sdk.js?=false`;
 
 export default function KakaoMap() {
   return (
