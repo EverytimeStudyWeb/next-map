@@ -1,25 +1,17 @@
-import { useLoadScript, GoogleMap, Marker } from '@react-google-maps/api';
-import { useMemo } from 'react';
+import Script from "next/script";
+import { Map } from "react-kakao-maps-sdk";
 
-const libraries = ['places', 'geometry', 'drawing', 'visualization'];
-//라이브러리들 (검색, 지리적계산, 지도위그리기, 전체화면)
+// npm install react-kakao-maps-sdk
+const KAKAO_SDK_URL = `//dapi.kakao.com/v2/maps/sdk.js?appkey=b4dbb01618c369d6fccddd1e90bb4dee&autoload=false`;
 
-export default function MapPage() {
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_MAP_PROJECT_API_KEY,
-    libraries,
-  });
-
-  const center = useMemo(() => ({ lat: 37.5665, lng: 126.978 }), []);
-  //중심위치는 한국
-
+export default function KakaoMap() {
   return (
-    <GoogleMap
-      mapContainerStyle={{ width: '100%', height: '500px' }}
-      center={center}
-      zoom={10}
-    >
-      <Marker position={center} />
-    </GoogleMap>
+    <div style={{ width: "500px", height: "400px" }}>
+      <Script src={KAKAO_SDK_URL} strategy="beforeInteractive" />
+      <Map
+        center={{ lat: 33.450701, lng: 126.570667 }}
+        style={{ width: "100%", height: "100%" }}
+      ></Map>
+    </div>
   );
 }
